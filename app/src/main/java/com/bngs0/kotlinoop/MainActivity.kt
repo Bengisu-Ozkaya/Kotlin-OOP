@@ -64,6 +64,34 @@ import kotlinx.coroutines.SupervisorJob
         println(guitar.roomName)
         guitar.info()
 
+        //Lambda expressions
+        /*fun printString(myString : String) {
+            println(myString)
+        }
+        printString("string")*/
+
+        /*Üstteki ile aynı kod ancak lambda gösterimli*/
+        val printString = {myString : String -> println(myString)}
+        printString("aaa")
+
+        val sumLambda = {a: Int, b :Int -> a+b}
+        println(sumLambda(2,7))
+
+        /*üstteki kod ile aynı sadece farklı gösterim*/
+        /*val sumLambda : (Int, Int) -> Int = {a,b -> a+b}
+        println(sumLambda(3,5))*/
+
+        //asynchrnous
+        fun downloadMusicians(url: String, completion : (Musician) -> Unit) { //completion musician girdisini alıo ve hiçbir şey döndürmüyor
+            //url'ye gittik ve downloada bastık
+            //indirdiğimiz veri geldi ve yaptıklarımız...
+            val kirkHammet = Musician("Kirk","Guitar",60)
+            completion(kirkHammet)
+        }
+
+        downloadMusicians("metallica.com",{ musician ->
+            println(musician.name)
+        })
 
 
 
